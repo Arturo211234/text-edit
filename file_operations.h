@@ -26,13 +26,12 @@ size_t openFile(char **buffer, size_t *buffer_size, char *fileName){
  fseek(file, 0, SEEK_END);
  *buffer_size = (size_t) ftell(file);
  rewind(file);
- printf("%ld\n", (*buffer_size));
  *buffer = (char *) malloc((*buffer_size) * 2);
  size_t ret_val = fread((*buffer), 1, (*buffer_size), file);
  if(ret_val != (*buffer_size)){
   puts("Unable to read file");
   exit(1);
- } printf("sizeof(buffer): %ld\n", sizeof(buffer));
+ }
  printf("Bytes Read: %ld\n", ret_val);
  fclose(file);
  *buffer_size = (*buffer_size) * 2;
