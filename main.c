@@ -21,7 +21,7 @@ uint8_t match(char *string, char *dictionary[], size_t count, uint8_t *index){
 int main(int argc, char *argv[]){
 
  size_t text_buffer_size; // This is the # of elements in the text buffer
- char *buffer;              // This will hold all the text
+ char *buffer;            // This will hold all the text
 
  char *commands[] = {"new", "create", "open", "read"};
  uint8_t command;
@@ -45,9 +45,8 @@ int main(int argc, char *argv[]){
  run_command[3] = openFile; // Same thing with "open" and "read"
 
  run_command[command](&buffer, &text_buffer_size, argv[2]);
- for(size_t i = 0; i < (text_buffer_size); i++){
-  putchar(buffer[i]);
- }
+ buffer[(text_buffer_size / 2)] = '\0';
+ printf("%s", buffer); 
  free(buffer);
 
  return 0;
